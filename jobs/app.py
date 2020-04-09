@@ -34,3 +34,8 @@ def close_connection(exception):
     connection = getattr(g, '_connection', None)
     if connection != None:
         connection.close()
+
+@app.route("/job/<job_id>")
+def job(job_id):
+    job = execute_sql('SELECT job.id, job.title, job.description, job.salary, employer.id as employer_id, employer.name as employer_name FROM job JOIN employer ON employer.id = job.employer_id WHERE job.id = ?', [job_id], single=True)
+    return render_template('job.html', job=job)
