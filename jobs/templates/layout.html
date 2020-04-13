@@ -1,17 +1,19 @@
-<!-- templates/layout.html -->
 <!doctype html>
 <link rel="stylesheet" href= "{{ url_for('static',filename='css/bulma.min.css') }}"></link>
 <link rel="stylesheet" href="{{ url_for('static',filename='css/app.css') }}"></link>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"></link>
-{% from '_macros.html' import show_job, show_jobs with context %}
 <html>
   <head>
+
     <title>Job Board</title>
   </head>
   <body>
     <div class="container top">
       <div class="content">
         {% block content %}
+        {% from "_macros.html" import show_job, show_jobs with context %}
+        <h1>JOBS</h1>
+
         {% endblock %}
       </div>
     </div>
